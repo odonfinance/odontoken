@@ -1,7 +1,3 @@
-/**
- *Submitted for verification at moonriver.moonscan.io on 2022-05-07
-*/
-
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.6.8;
 
