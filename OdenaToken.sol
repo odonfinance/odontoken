@@ -1,7 +1,3 @@
-/**
- *Submitted for verification at BscScan.com on 2022-08-14
-*/
-
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
@@ -717,7 +713,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
 
-contract CPTS is Context, IERC20, IERC20Metadata, Ownable {
+contract ODENA is Context, IERC20, IERC20Metadata, Ownable {
     using SafeMath for uint256;
     mapping(address => uint256) private _balances;
 
@@ -760,8 +756,8 @@ contract CPTS is Context, IERC20, IERC20Metadata, Ownable {
     );
 
     constructor() {
-        _name = "CPTS";
-        _symbol = "CPTS";
+        _name = "ODENA";
+        _symbol = "ODENA";
         _decimals = 18;
         MaxSupply = 30_000_000 * 10**_decimals;
 
