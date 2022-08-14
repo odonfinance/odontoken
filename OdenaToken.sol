@@ -1,3 +1,7 @@
+/**
+ *Submitted for verification at BscScan.com on 2022-08-14
+*/
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
@@ -742,17 +746,18 @@ contract CPTS is Context, IERC20, IERC20Metadata, Ownable {
 
     IUniswapV2Router02 public uniswapV2Router;
     address public uniswapV2Pair;
-
-
-
     uint256 private constant numTokensSellToAddToLiquidity = 500000 * 10**18;
     uint256 public _maxTxAmount = 10 * 10**6 * 10**18;
 
     event TaxFeeUpdated(uint256 totalFee);
     event MaxTxAmountUpdated(uint256 updatingTxAmount);
     event MinTokensBeforeSwapUpdated(uint256 minTokensBeforeSwap);
-
-
+    event SwapAndLiquifyEnabledUpdated(bool enabled);
+    event SwapAndLiquify(
+        uint256 tokensSwapped,
+        uint256 ethReceived,
+        uint256 tokensIntoLiquidity
+    );
 
     constructor() {
         _name = "CPTS";
@@ -985,7 +990,7 @@ contract CPTS is Context, IERC20, IERC20Metadata, Ownable {
         address sender,
         address recipient,
         uint256 amount
-    ) internal virtual  {
+    ) internal virtual {
         require(sender != address(0), "BEP20: transfer from the zero address");
         require(recipient != address(0), "BEP20: transfer to the zero address");
 
@@ -1011,8 +1016,6 @@ contract CPTS is Context, IERC20, IERC20Metadata, Ownable {
             _liquidityAmt = 0;
             _burnAmt = 0;
         }
-
- 
 
         uint256 senderBalance = _balances[sender];
         require(
@@ -1186,10 +1189,4 @@ contract CPTS is Context, IERC20, IERC20Metadata, Ownable {
         address to,
         uint256 amount
     ) internal virtual {}
-
-  
-
-
-
-
 }
